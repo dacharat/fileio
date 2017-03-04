@@ -84,14 +84,9 @@ public class FileCopyTask implements Runnable{
 		// If 'in' is null then throw a RuntimeException 
 		// so the caller will know that filename could not be opened.
 		
-		//TODO If in (InputStream) is null, throw a RuntimeException with a message.
-//		try{
-//			if(in == null){
-//				throw new RuntimeException();
-//			}
-//		}catch(RuntimeException e){
-//			e.printStackTrace();
-//		}
+		if(in == null){
+			throw new RuntimeException("Don't find resource.");
+		}
 	}
 	
 	/**
@@ -139,7 +134,6 @@ public class FileCopyTask implements Runnable{
 		
 		// Define a FileUtil task to copy a file byte by byte.
 		// This is an anonymous class that extends FileUtilTimer.
-		//TODO Can you make this code shorter by passing the filenames
 		// as parameters to the superclass constructor?
 		TaskTimer timer = new TaskTimer();
 		FileCopyTask task1 = new FileCopyTask() {
@@ -227,9 +221,7 @@ public class FileCopyTask implements Runnable{
 		task6.setInput(inputFilename);
 		task6.setOutput("filecopy.txt");
 		timer.measureAndPrint(task6);
-		//TODO Define tasks for the other copy tests you need.
 		
-		//TODO 'Avoid Magic Numbers' - some tasks require a blocksize
 		// for the copy method.  Don't write this as a number in the
 		// anonymous class!  Use a variable from the outer scope (here).  
 	}
